@@ -5,10 +5,12 @@ on:
     inputs:
       param1:
         description: 'First parameter'
+        type: string
         required: true
         default: 'world'
       param2:
         description: 'Second parameter'
+        type: string
         required: true
         default: 'friend'
 
