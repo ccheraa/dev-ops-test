@@ -1,0 +1,39 @@
+name: Run Script on Remote Server
+
+on:
+  workflow_dispatch:
+    inputs:
+      param1:
+        description: 'First parameter'
+        required: true
+        default: 'world'
+      param2:
+        description: 'Second parameter'
+        required: true
+        default: 'friend'
+      host:
+        description: 'Remote server host'
+        required: true
+      username:
+        description: 'SSH username'
+        required: true
+      password:
+        description: 'SSH password'
+        required: true
+        secret: true
+
+jobs:
+  run-on-remote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run script on remote server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ github.event.inputs.host }}
+          username: ${{ github.event.inputs.username }}
+          password: ${{ github.event.inputs.password }}
+          script: |
+            bash script.sh ${{ github.event.inputs.param1 }} ${{ github.event.inputs.param2 }}
