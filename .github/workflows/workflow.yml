@@ -26,14 +26,5 @@ jobs:
   run-on-remote:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Run script on remote server
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ inputs.host }}
-          username: ${{ inputs.username }}
-          password: ${{ inputs.password }}
-          script: |
-            bash script.sh ${{ inputs.param1 }} ${{ inputs.param2 }}
+      - name: Output parameters to the console
+        run: echo "Hello ${{ inputs.param1 }} ${{ inputs.param2 }}"
