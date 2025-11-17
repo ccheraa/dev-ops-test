@@ -1,7 +1,7 @@
 name: Run Script on Remote Server
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       param1:
         description: 'First parameter'
