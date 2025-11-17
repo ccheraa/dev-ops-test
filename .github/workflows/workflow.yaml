@@ -2,10 +2,19 @@ name: Run Script on Remote Server
 
 on:
   workflow_call:
+    inputs:
+      param1:
+        description: 'First parameter'
+        required: true
+        default: 'world'
+      param2:
+        description: 'Second parameter'
+        required: true
+        default: 'friend'
 
 jobs:
   run-on-remote:
     runs-on: ubuntu-latest
     steps:
       - name: Output parameters to the console
-        run: echo "Hello World!"
+        run: echo "Hello ${{ inputs.param1 }} ${{ inputs.param2 }}"
