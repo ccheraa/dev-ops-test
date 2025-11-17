@@ -32,8 +32,8 @@ jobs:
       - name: Run script on remote server
         uses: appleboy/ssh-action@v1
         with:
-          host: ${{ github.event.inputs.host }}
-          username: ${{ github.event.inputs.username }}
-          password: ${{ github.event.inputs.password }}
+          host: ${{ inputs.host }}
+          username: ${{ inputs.username }}
+          password: ${{ inputs.password }}
           script: |
-            bash script.sh ${{ github.event.inputs.param1 }} ${{ github.event.inputs.param2 }}
+            bash script.sh ${{ inputs.param1 }} ${{ inputs.param2 }}
